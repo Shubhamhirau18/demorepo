@@ -13,7 +13,7 @@ jobs:
       with:
         host: 35.154.94.193
         username: depuser
-        pass: ${{ secrets.DEP_PASSWORD }}
+        key: ${{ secrets.DEP_PASSWORD }}
         port: 22
         scripts: |
           cd /var/www/html
