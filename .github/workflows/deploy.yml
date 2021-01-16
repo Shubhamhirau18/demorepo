@@ -1,7 +1,7 @@
 name: Demo Deployment
 on:
   push:
-    branches: [ master ]
+    branches: [ 'master', 'developer' ]
 
 jobs:
   jobs_one:
