@@ -17,4 +17,5 @@ jobs:
         port: 22
         script: |
           cd /var/www/html
-          echo "Helloworld" > test123.txt
+          git fetch --all
+          git reset --hard origin/master
