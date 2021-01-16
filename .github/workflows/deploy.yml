@@ -17,4 +17,4 @@ jobs:
         port: 22
         script: |
           cd /var/www/html
-          echo "Helloworld"
+          echo "Helloworld" > test123.txt
