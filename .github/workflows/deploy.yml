@@ -20,7 +20,4 @@ jobs:
         proxy_password: ${{ secrets.PROXY_KEY }}
         proxy_port: ${{ secrets.PORT }}
         script: |
-          mkdir hello
-          cd hello
-          touch a.txt
-          ls -lh
+          mkdir hello; cd hello; touch b.txt; ls -lh
