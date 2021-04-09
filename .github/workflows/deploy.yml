@@ -5,8 +5,9 @@ on:
     branches: [ master ]
 
 jobs:
-  jobs_one:
-    name: Deploy
+
+  Deploy:
+    name: Deploying to Web Server
     runs-on: ubuntu-latest
     steps:
     - name: Testing Server Connection
