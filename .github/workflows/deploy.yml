@@ -1,4 +1,5 @@
-name: Demo Deployment
+---
+name: Github Actions Deployment
 on:
   push:
     branches: [ master ]
@@ -11,7 +12,7 @@ jobs:
     - name: Testing Server Connection
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ secrets.HOST }}  
         username: ${{ secrets.USER }}
         password: ${{ secrets.PASS }}
         port: ${{ secrets.PORT }}
@@ -20,4 +21,7 @@ jobs:
         proxy_password: ${{ secrets.PROXY_KEY }}
         proxy_port: ${{ secrets.PORT }}
         script: |
-          mkdir hello; cd hello; touch b.txt; ls -lh
+          cd hello/demorepo
+          git fetch --all
+          git reset --hard origin/master
+...
