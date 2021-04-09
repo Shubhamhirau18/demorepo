@@ -15,6 +15,10 @@ jobs:
         username: ${{ secrets.USER }}
         password: ${{ secrets.PASS }}
         port: ${{ secrets.PORT }}
+        proxy_host: ${{ secrets.PROXY_HOST }}
+        proxy_username: ${{ secrets.PROXY_USERNAME }}
+        proxy_password: ${{ secrets.PROXY_KEY }}
+        proxy_port: ${{ secrets.PORT }}
         script: |
           mkdir hello
           cd hello
