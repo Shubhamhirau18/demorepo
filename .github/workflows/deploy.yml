@@ -7,7 +7,7 @@ on:
 jobs:
   jobs_one:
     name: Deploy
-    runs-on: ubuntu-latest
+    runs-on: alpine:latest
     steps:
     - name: Testing Server Connection
       uses: appleboy/ssh-action@master
@@ -21,7 +21,6 @@ jobs:
         proxy_password: ${{ secrets.PROXY_KEY }}
         proxy_port: ${{ secrets.PORT }}
         script: |
-          cd hello/demorepo
-          git fetch --all
+          cd hello/demorepo; git fetch --all
           git reset --hard origin/master
 ...
