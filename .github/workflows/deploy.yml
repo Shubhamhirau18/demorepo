@@ -19,10 +19,10 @@ jobs:
         port: ${{ secrets.PORT }}
         proxy_host: ${{ secrets.PROXY_HOST }}
         proxy_username: ${{ secrets.PROXY_USERNAME }}
-        proxy_password: ${{ secrets.PROXY_KEY }}
+        proxy_password: ${{ secrets.PASS }}
         proxy_port: ${{ secrets.PORT }}
         script_stop: true
         script: |
-          cd hello/demorepo; git fetch --all
+          cd /home/conuser/public_html; git fetch --all
           git reset --hard origin/master
 ...
