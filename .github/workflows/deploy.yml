@@ -34,6 +34,6 @@ jobs:
         password: ${{ secrets.PASS }}
         port: ${{ secrets.PORT }}
         script: |
-          cd public_html/ && echo "Hello 20Sept2021" > test.txt
+          cd public_html/ && echo "`date`" > test.txt
           echo "Successfully Executed Command on Server"
 ...
