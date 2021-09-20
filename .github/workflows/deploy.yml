@@ -1,28 +1,38 @@
 ---
-name: Github Actions Deployment
+name: Staging Deployment
 on:
   push:
     branches: [ master ]
-
 jobs:
-
-  Deploy:
-    name: Deploying to Web Server
+  Deploying_Code:
+    name: Deploying Code on Server
     runs-on: ubuntu-latest
     steps:
-    - name: Testing Server Connection
+    - uses: actions/checkout@v1
+    - name: Started Deploying Code on Server
+      env:
+        User: ${{ secrets.USER }}
+        Pass: ${{ secrets.PASS }}
+        Host: ${{ secrets.HOST }}
+        Port: ${{ secrets.PORT }}
+      run: |
+        wget https://raw.githubusercontent.com/git-ftp/git-ftp/master/git-ftp && chmod +x git-ftp
+        git config git-ftp.user "$User" && git config git-ftp.password "$Pass"
+        git config git-ftp.url sftp://"$Host":"$Port"/home/depuser/public_html/
+        ./git-ftp init --insecure --syncroot .
+        echo "Deployed Code Successfully on Server"
+  Command_Execution:
+    name: Executing Comamand on Server
+    runs-on: ubuntu-latest
+    steps:
+    - name: Establishing Connection to Server 
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}  
+        host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         password: ${{ secrets.PASS }}
         port: ${{ secrets.PORT }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.PROXY_USERNAME }}
-        proxy_password: ${{ secrets.PASS }}
-        proxy_port: ${{ secrets.PORT }}
-        script_stop: true
         script: |
-          cd /home/conuser/public_html; git fetch --all
-          git reset --hard origin/master
+          cd public_html/ && echo "Hello 20Sept2021" > test.txt
+          echo "Successfully Executed Command on Server"
 ...
