@@ -1,8 +1,6 @@
 ---
 name: Staging Deployment
-on:
-  push:
-    branches: [ master ]
+on: workflow_dispatch
 jobs:
   Deploying_Code:
     name: Deploying Code on Server
