@@ -23,10 +23,10 @@ jobs:
         PRPort: ${{ secrets.PROXY_PORT }}
       run: |
         wget https://raw.githubusercontent.com/git-ftp/git-ftp/master/git-ftp && chmod +x git-ftp
-        git config git-ftp.user "$User" && git config git-ftp.password "$Pass"
-        git config git-ftp.url sftp://"$Host":"$Port"/home/depuser/public_html/
+        git config git-ftp.user ${User} && git config git-ftp.password ${Pass}
+        git config git-ftp.url sftp://${Host}:{$Port}/home/depuser/public_html/
         git config --local http.proxy http://${PRUser}:${PRPass}@${PRHost}:${PRPort}
-        ./git-ftp push --insecure --syncroot .
+        sh git-ftp push --insecure --syncroot .
         echo "Deployed Code Successfully on Server"
   Command_Execution:
     name: Executing Comamand on Server
