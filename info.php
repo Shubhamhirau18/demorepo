@@ -1,3 +1,3 @@
 <?php phpinfo(); 
-echo "Hello 10Nov21 Happy Happy"
+echo "Hello 10Nov2021 Happy Happy"
 ?>
